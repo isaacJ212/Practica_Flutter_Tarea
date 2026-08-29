@@ -20,6 +20,10 @@ class HomeServicesScreen extends StatelessWidget {
                 const SizedBox(height: 24),
                 _buildPromoBanner(),
                 const SizedBox(height: 24),
+                _buildSectionHeader('Popular Services'),
+                const SizedBox(height: 16),
+                _buildPopularServices(),
+                const SizedBox(height: 24),
               ],
             ),
           ),
@@ -127,31 +131,60 @@ class HomeServicesScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('AC not cooling?', style: TextStyle(color: Colors.white70, fontSize: 14)),
+          const Text(
+            'AC not cooling?',
+            style: TextStyle(color: Colors.white70, fontSize: 14),
+          ),
           const SizedBox(height: 4),
-          const Text("We'll fix it fast.", style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold)),
+          const Text(
+            "We'll fix it fast.",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           const SizedBox(height: 16),
           _bannerFeatureRow(Icons.bolt, 'Instant service in 30 mins'),
           const SizedBox(height: 8),
-          _bannerFeatureRow(Icons.verified, 'Expert technicians • Genuine parts'),
+          _bannerFeatureRow(
+            Icons.verified,
+            'Expert technicians • Genuine parts',
+          ),
           const SizedBox(height: 20),
           Row(
             children: [
               ElevatedButton.icon(
                 onPressed: () {},
-                icon: const Icon(Icons.bolt, color: Color(0xFF386A4F), size: 18),
-                label: const Text('Instant Service', style: TextStyle(color: Color(0xFF386A4F))),
+                icon: const Icon(
+                  Icons.bolt,
+                  color: Color(0xFF386A4F),
+                  size: 18,
+                ),
+                label: const Text(
+                  'Instant Service',
+                  style: TextStyle(color: Color(0xFF386A4F)),
+                ),
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
               ),
               const SizedBox(width: 12),
               OutlinedButton.icon(
                 onPressed: () {},
-                icon: const Icon(Icons.calendar_month, color: Colors.white, size: 18),
-                label: const Text('Schedule Service', style: TextStyle(color: Colors.white)),
-                style: OutlinedButton.styleFrom(side: const BorderSide(color: Colors.white)),
-              )
+                icon: const Icon(
+                  Icons.calendar_month,
+                  color: Colors.white,
+                  size: 18,
+                ),
+                label: const Text(
+                  'Schedule Service',
+                  style: TextStyle(color: Colors.white),
+                ),
+                style: OutlinedButton.styleFrom(
+                  side: const BorderSide(color: Colors.white),
+                ),
+              ),
             ],
-          )
+          ),
         ],
       ),
     );
@@ -166,5 +199,69 @@ class HomeServicesScreen extends StatelessWidget {
       ],
     );
   }
-}
 
+  Widget _buildSectionHeader(String title) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          title,
+          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
+        const Text(
+          'See all >',
+          style: TextStyle(color: Colors.grey, fontSize: 14),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildPopularServices() {
+    final services = [
+      {'icon': Icons.cleaning_services, 'name': 'House Cleaning'},
+      {'icon': Icons.ac_unit, 'name': 'AC Repair'},
+      {'icon': Icons.plumbing, 'name': 'Plumbing'},
+      {'icon': Icons.electrical_services, 'name': 'Electrical'},
+      {'icon': Icons.local_laundry_service, 'name': 'Washing Machine'},
+      {'icon': Icons.kitchen, 'name': 'Refrigerator'},
+      {'icon': Icons.microwave, 'name': 'Microwave Oven'},
+      {'icon': Icons.grid_view, 'name': 'More Services'},
+    ];
+
+    return GridView.builder(
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: services.length,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 4,
+        childAspectRatio: 0.8,
+        crossAxisSpacing: 12,
+        mainAxisSpacing: 16,
+      ),
+      itemBuilder: (context, index) {
+        return Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: Colors.green.withOpacity(0.05),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Icon(
+                services[index]['icon'] as IconData,
+                color: const Color(0xFF2E7D32),
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              services[index]['name'] as String,
+              style: const TextStyle(fontSize: 10),
+              textAlign: TextAlign.center,
+              maxLines: 2,
+            ),
+          ],
+        );
+      },
+    );
+  }
+}
