@@ -160,33 +160,37 @@ class HomeServicesScreen extends StatelessWidget {
           const SizedBox(height: 20),
           Row(
             children: [
-              ElevatedButton.icon(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.bolt,
-                  color: Color(0xFF386A4F),
-                  size: 18,
+              Expanded(
+                child: ElevatedButton.icon(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.bolt,
+                    color: Color(0xFF386A4F),
+                    size: 18,
+                  ),
+                  label: const Text(
+                    'Instant Service',
+                    style: TextStyle(color: Color(0xFF386A4F)),
+                  ),
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
                 ),
-                label: const Text(
-                  'Instant Service',
-                  style: TextStyle(color: Color(0xFF386A4F)),
-                ),
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
               ),
               const SizedBox(width: 12),
-              OutlinedButton.icon(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.calendar_month,
-                  color: Colors.white,
-                  size: 18,
-                ),
-                label: const Text(
-                  'Schedule Service',
-                  style: TextStyle(color: Colors.white),
-                ),
-                style: OutlinedButton.styleFrom(
-                  side: const BorderSide(color: Colors.white),
+              Expanded(
+                child: OutlinedButton.icon(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.calendar_month,
+                    color: Colors.white,
+                    size: 18,
+                  ),
+                  label: const Text(
+                    'Schedule Service',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  style: OutlinedButton.styleFrom(
+                    side: const BorderSide(color: Colors.white),
+                  ),
                 ),
               ),
             ],
@@ -246,6 +250,7 @@ class HomeServicesScreen extends StatelessWidget {
       ),
       itemBuilder: (context, index) {
         return Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Container(
               padding: const EdgeInsets.all(12),
@@ -325,7 +330,7 @@ class HomeServicesScreen extends StatelessWidget {
                           Text('Verified Professional', style: TextStyle(fontSize: 10, color: Colors.green)),
                         ],
                       ),
-                      const Spacer(), 
+                      SizedBox(height: 8), 
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
