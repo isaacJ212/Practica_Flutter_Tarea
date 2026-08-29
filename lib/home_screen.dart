@@ -27,6 +27,9 @@ class HomeServicesScreen extends StatelessWidget {
                 _buildSectionHeader('Recommended for You'),
                 const SizedBox(height: 16),
                 _buildRecommendedServices(),
+                const SizedBox(height: 24),
+                _buildTrustBadges(),
+                const SizedBox(height: 24),
               ],
             ),
           ),
@@ -352,6 +355,30 @@ class HomeServicesScreen extends StatelessWidget {
           );
         },
       ),
+    );
+  }
+
+
+
+  Widget _buildTrustBadges() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        _trustItem(Icons.verified_user_outlined, 'Verified\nProfessionals'),
+        _trustItem(Icons.price_check, 'Transparent\nPricing'),
+        _trustItem(Icons.workspace_premium_outlined, 'Up to 30 Days\nWarranty'),
+        _trustItem(Icons.support_agent, 'Live Tracking'),
+      ],
+    );
+  }
+
+  Widget _trustItem(IconData icon, String text) {
+    return Column(
+      children: [
+        Icon(icon, color: Colors.grey[500], size: 28),
+        const SizedBox(height: 8),
+        Text(text, textAlign: TextAlign.center, style: TextStyle(fontSize: 10, color: Colors.grey[600])),
+      ],
     );
   }
 
