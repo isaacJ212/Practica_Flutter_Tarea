@@ -24,6 +24,9 @@ class HomeServicesScreen extends StatelessWidget {
                 const SizedBox(height: 16),
                 _buildPopularServices(),
                 const SizedBox(height: 24),
+                _buildSectionHeader('Recommended for You'),
+                const SizedBox(height: 16),
+                _buildRecommendedServices(),
               ],
             ),
           ),
@@ -264,4 +267,93 @@ class HomeServicesScreen extends StatelessWidget {
       },
     );
   }
+
+  Widget _buildRecommendedServices() {
+    return SizedBox(
+      height: 260, 
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: 3,
+        itemBuilder: (context, index) {
+          return Container(
+            width: 200,
+            margin: const EdgeInsets.only(right: 16),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.grey[200]!),
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Stack(
+                  children: [
+                    Container(
+                      height: 110,
+                      decoration: const BoxDecoration(
+                        color: Colors.black12, 
+                        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+                      ),
+                    ),
+                    if (index == 0) 
+                      Positioned(
+                        top: 8,
+                        left: 8,
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                          decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20)),
+                          child: const Text('Bestseller', style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
+                        ),
+                      ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text('House Cleaning', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                      const SizedBox(height: 4),
+                      const Text('⭐ 4.8 (2.3K) • 2.5 hrs', style: TextStyle(fontSize: 12, color: Colors.grey)),
+                      const SizedBox(height: 8),
+                      Row(
+                        children: const [
+                          Icon(Icons.verified, color: Colors.green, size: 14),
+                          SizedBox(width: 4),
+                          Text('Verified Professional', style: TextStyle(fontSize: 10, color: Colors.green)),
+                        ],
+                      ),
+                      const Spacer(), 
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: const [
+                              Text('₹799', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                              Text('₹999', style: TextStyle(fontSize: 12, color: Colors.grey, decoration: TextDecoration.lineThrough)),
+                            ],
+                          ),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: const Color(0xFF2E7D32),
+                              foregroundColor: Colors.white,
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                            ),
+                            onPressed: () {},
+                            child: const Text('Book Now'),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+
 }
