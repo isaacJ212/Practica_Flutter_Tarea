@@ -14,3 +14,5 @@ Estos son algunos de los recurso que tome como referencia del problema que surgi
 - https://coseries.com/flutter-container-overflow/
 - https://medium.com/@tashpemhiwa/flutter-another-exception-was-thrown-package-flutter-src-widgets-navigator-dart-ec39ae91d57c
 - https://stackoverflow.com/questions/64109444/error-assertion-failed-debugduringdeviceupdate-is-not-true-flutter
+
+***Nota : el diseño no es igual pero es un poco similar***
