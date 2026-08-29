@@ -13,7 +13,12 @@ class HomeServicesScreen extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [_buildHeader(), const SizedBox(height: 20)],
+              children: [
+                _buildHeader(),
+                const SizedBox(height: 20),
+                _buildSearchBar(),
+                const SizedBox(height: 24),
+              ],
             ),
           ),
         ),
@@ -86,6 +91,26 @@ class HomeServicesScreen extends StatelessWidget {
           ],
         ),
       ],
+    );
+  }
+
+  Widget _buildSearchBar() {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      decoration: BoxDecoration(
+        color: Colors.grey[50],
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.grey[200]!),
+      ),
+      child: const TextField(
+        decoration: InputDecoration(
+          icon: Icon(Icons.search, color: Colors.grey),
+          hintText: 'Search for appliance or service',
+          hintStyle: TextStyle(color: Colors.grey, fontSize: 14),
+          border: InputBorder.none,
+          suffixIcon: Icon(Icons.tune, color: Colors.grey),
+        ),
+      ),
     );
   }
 }
